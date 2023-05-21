@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>CSS Website Layout</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" src="js/code.js"></script>
+	<link rel="stylesheet" href="css/styles.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+</head>
+
+<body>
+	<div class="header">
+		<h1>ContactManag3r</h1>
+		<p>Remembering your family, friends, and random people is overrated, let us instead!</p>
+	</div>
+
+	<div class="topNav">
+	  <a href="contacts.html">Contacts</a>
+	  <a href="aboutus.html">About Us</a>
+	  <div class="topNavRight">
+			<!-- when get to add ?action=doLogout();" -->
+			<a title="Log Out"  href="#">Log Out</a>
+		</div>
+	</div>
+
+	<div class="accessUIDiv">
+	 <!--  <div class="column">
+		<h2>Column</h2>
+		
+	  </div> -->
+	  
+	  <div class="column">
+		<!-- <h2>Column</h2> -->
+		<div class="fancySearchBar">
+			<!-- try onkeyup and searchContacts() -->
+			<input type="text" class="searchInput" id="searchName" name="searchName" 
+			placeholder="Search here...">
+		</div>
+	  </div>
+	  
+	  <div class="column">
+		<!-- <h2>Column</h2> -->
+		<button type="button" class="contactsButton"><i class="material-icons">add</i></button>
+	  </div>
+	  
+	</div>
+
+	<!-- working on making dynamic to read from database -->		
+	<div class="contactsTable">
+		<table id="contactsTable">
+			<tr>
+				<th>NAME</th>
+				<th>EMAIL</th>
+				<th>PHONE</th>
+				<th>CREATED</th>
+				<th>Edit</th>
+			</tr>
+			<tr>
+				<td>name1</td>
+				<td>mail1</td>
+				<td>phone1</td>
+				<td>created1</td>
+				<td>
+					<button type="button" class="contactsButton"><i class="material-icons">edit_note</i></button>
+					<button type="button" class="contactsButton"><i class="material-icons">delete</i></button>
+					
+				</td>
+				
+			</tr>
+			<tr>
+				<td>name2</td>
+				<td>mail2</td>
+				<td>phone2</td>
+				<td>created2</td>
+				<td>
+					<button type="button" class="contactsButton"><i class="material-icons">edit_note</i></button>
+					<button type="button" class="contactsButton"><i class="material-icons">delete</i></button>
+					
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="footer">
+	</div>
+</body>
+</html>

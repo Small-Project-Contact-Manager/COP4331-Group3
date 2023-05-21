@@ -1,0 +1,275 @@
+* 
+{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+body 
+{
+  margin: 0;
+}
+
+/* Style the header */
+.header 
+{
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Style the top navigation bar */
+.topNav 
+{
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the topnav links */
+.topNav a 
+{
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topNav a:hover 
+{
+  background-color: #ddd;
+  color: black;
+}
+.topNavRight
+{
+	float: right;
+}
+/* related to accessUIDiv*/
+.accessUIDiv
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+/* Create three equal columns that floats next to each other */
+.column 
+{
+  float: left;
+  width: 33.33%;
+  padding: 15px;
+}
+
+/* Clear floats after the columns */
+.accessUIDiv:after 
+{
+  content: "";
+  display: table;
+  clear: both;
+}
+/*related to the login/register*/
+#login{
+	left: 50px;
+}
+#register{
+	left: 450px;
+}
+.loginRegisterBox{
+	width: 380px;
+	height: 550px;
+	position: relative;
+	box-shadow: 0 0 20px 9px #546E7A;
+	margin: 6% auto;
+	background: #FAFAFA;
+	padding: 5px;
+	overflow: hidden;
+	border-radius: 25px;
+}
+.buttonBox{
+	width: 220px;
+	margin: 35px auto;
+	position: relative;
+	box-shadow: 0 0 20px 9px #546E7A;
+	border-radius: 30px;
+}
+.toggleButton{
+	padding: 10px 30px;
+	cursor: pointer;
+	background: transparent;
+	border:0;
+	outline: none;
+	position: relative;
+}
+/* the button that transitions */
+#button{
+	top: 0;
+	left: 0;
+	position: absolute;
+	width: 110px;
+	height: 100%;
+	background: linear-gradient(to bottom, #272727 0%, #AABFC9 100%);
+	border-radius: 30px;
+	transition: .5s;
+}
+.inputGroup{
+	position: absolute;
+	width: 280px;
+	transition: .5s;
+}
+.inputField{
+	width: 100%;
+	padding: 10px 0;
+	margin: 5px 0;
+	box-sizing: border-box;
+	border: none;
+	border-bottom: 2px solid #ccc;
+	background: transparent;
+}
+.submitButton{
+	width: 50%;
+	padding: 10px 30px;
+	cursor: pointer;
+	display: block;
+	margin: auto;
+	background: linear-gradient(to bottom, #272727 0%, #AABFC9 100%);
+	border:0;
+	outline: none;
+	border-radius: 30px;
+}
+.submitButton:hover{
+	background: #AABFC9;
+}
+
+/* related to checking validity*/
+#userNameMessage,#passwordMessage
+{
+	display: none;
+	color: #000;
+	position: relative;
+	padding: 20px;
+	margin-top: 10px;
+}
+#userNameMessage p
+{
+	padding 10px 35px;
+	font-size:18px;
+}
+.valid
+{
+	color: green;
+}
+.valid:before
+{
+	position: relative;
+	left: -35px;
+	content: "\2611";
+}
+.invalid
+{
+	color: red;
+}
+.invalid:before
+{
+	position:relative;
+	left: -35px;
+	content:"\2612";
+}
+
+/* related to fancy search bar */
+.fancySearchBar
+{
+	position: relative;
+	<!-- left: 50%; -->
+	width:200px;
+	/* transform:  translate(-50%,50%); */
+	background: #272727;
+	height: 40px;
+	border-radius: 40px;
+	padding: 10px;
+	margin: 15px;
+}
+
+.fancySearchBar:hover >.searchInput
+{
+	width: 240px;
+}
+
+.searchInput
+{
+	border:none;
+	background: none;
+	outline:none;
+	float:left;
+	padding: 0;
+	color: white;
+	font-size: 16px;
+	transition: 0.4s;
+	/*line-height: 40px;*/
+	width: 0px;
+}
+ /* related to contacts table */
+#contactsTable
+{
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 75%;
+	table-layout: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#contactsTable td, #contactsTable th 
+{
+	border: 2px solid #ddd;
+	padding: 8px;
+}
+/* rows */
+#contactsTable tr
+{
+	background-color: #f2f2f2;
+	text-align: center;
+}
+
+#contactsTable tr:hover 
+{
+	background-color: #ddd;
+}
+/* columns */
+#contactsTable th 
+{
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: center;
+	background-color: #272727;
+	color: white;
+}
+/*related to contacts buttons*/
+.material-icons
+{
+	color: white;
+}
+
+.material-icons: hover
+{
+	color: black;
+}
+
+.contactsButton
+{
+	border-radius: 30px;
+	width: 20%;
+	padding: 10px;
+	background-color: #272727;
+}
+
+.contactsButton:hover
+{
+	background-color: #ddd;
+	color: black;
+}
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width:600px) {
+  .column {
+    width: 100%;
+  }

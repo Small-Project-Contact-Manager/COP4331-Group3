@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>CSS Website Layout</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" src="js/code.js"></script>
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+	<div class="header">
+		<h1>ContactManag3r</h1>
+		<p>Remembering your family, friends, and random people is overrated, let us instead!</p>
+	</div>
+
+	<!-- login and registration for site -->
+	<div class="loginRegisterBox">
+		<!-- fancy login/register toggle -->
+		<div class="buttonBox">
+			<!-- the button that transitions -->
+			<div id="button"></div>
+			<button type="button" class="toggleButton" onclick="clickLogin()">Login</button>
+			<button type="button" class="toggleButton" onclick="clickRegister()">Register</button>
+		</div>
+		<!-- login form -->
+		<form id="login" class="inputGroup">
+			<input type="text" class="inputField" id="loginName" placeholder="username" 
+				name="username" required pattern="(?=.*[a-zA-Z])[a-zA-Z0-9]{8,16}$"/>
+			<input type="password" class="inputField" id="loginPassword" placeholder="password" 
+				name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])
+				(?=.*[!@#$%^&*]).{8,}"/>
+			<!-- add onclick="doLogin()" when we get around to that -->
+			<button type="submit" class="submitButton">Login</button>
+			<span id="loginResult"></span>
+		</form>
+		<!-- register form -->
+		<form id="register" class="inputGroup">
+			<input type="text" class="inputField" id="firstName" name="firstName" 
+				placeholder="first name" required/>
+			<input type="text" class="inputField" id="lastName" name="lastName" 
+				placeholder="last name" required/>
+			<input type="text" class="inputField" id="regName" name="regName" 
+				placeholder="username" required pattern="(?=.*[a-zA-Z])[a-zA-Z0-9]{8,16}$"
+				title="Must be 8 and 16 characters and only letters and numbers are allowed"/>
+			<input type="password" class="inputField" id="regPassword" name="regPassword" 
+				placeholder="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])
+				(?=.*[!@#$%^&*]).{8,}" title="Must contain at least one number, one uppercase 
+				letter, one lowercase letter, one special character, and at least 8 or more 
+				characters"/>
+			<!-- add onclick="doRegister()" when we get to that-->
+			<button type="submit" class="submitButton">Register</button>
+			<span id="registerResult"></span>
+			<div id="userNameMessage">
+				<h3>Username must contain the following</h3>
+					<p id="usernameLetter" class="invalid">
+						A <b>lowercase</b> letter
+					</p>
+					<p id="usernameCapital" class="invalid">
+						A <b>capital</b> letter
+					</p>
+					<p id="usernameNumber" class="invalid">
+						A <b>number</b>
+					</p>
+					<p id="usernameLength" class="invalid">
+						Between <b> 8 and 16</b> characters
+					</p>
+			</div>
+			<div id="passwordMessage">
+				<h3>Password must contain the following:</h3>
+					<p id="passwordLetter" class="invalid">
+						A <b>lowercase</b> letter
+					</p>
+					<p id="passwordCapital" class="invalid">
+						A <b>capital</b> letter
+					</p>
+					<p id="passwordNumber" class="invalid">
+						A <b>number</b>
+					</p>
+					<p id="passwordSpecial" class="invalid">
+						A special character <b>!@#$%^&*</b>
+					</p>
+					<p id="passwordLength" class="invalid">
+						Minimum <b> 8 characters</b>
+					</p>
+			</div>
+		</form>
+		<!-- username validation -->
+		<script>
+			var regName= document.getElementById("regName");
+			var usernameLetter= document.getElementById("usernameLetter");
+			var usernameCapital= document.getElementById("usernameCapital");
+			var usernameNumber= document.getElementById("usernameNumber");
+			var usernameLength= document.getElementById("usernameLength");
+			
+			// when user clicks on username field, show message box
+			regName.onfocus = function() {
+				document.getElementById("userNameMessage").style.display = "block";
+			}
+			// when user clicks username the password field, hide message box
+			regName.onblur = function() {
+				document.getElementById("userNameMessage").style.display = "none";
+			}
+			// when user starts to type something inside teh username field
+			regName.onkeyup = function() {
+				// validate lowercase letters
+				var lowerCaseLetters = /[a-z]/g;
+				if (regName.value.match(lowerCaseLetters))
+				{
+					usernameLetter.classList.remove("invalid");
+					usernameLetter.classList.add("valid");
+				}
+				else
+				{
+					usernameLetter.classList.remove("valid");
+					usernameLetter.classList.add("invalid");
+				}
+				// validate uppercase letters
+				var upperCaseLetters = /[A-Z]/g;
+				if (regName.value.match(upperCaseLetters))
+				{
+					usernameCapital.classList.remove("invalid");
+					usernameCapital.classList.add("valid");
+				}
+				else
+				{
+					usernameCapital.classList.remove("valid");
+					usernameCapital.classList.add("invalid");
+				}
+				// validate nummbers
+				var numbers = /[0-9]/g;
+				if (regName.value.match(numbers))
+				{
+					usernameNumber.classList.remove("invalid");
+					usernameNumber.classList.add("valid");
+				}
+				else
+				{
+					usernameNumber.classList.remove("valid");
+					usernameNumber.classList.add("invalid");
+				}
+				// validate length
+				if (regName.value.length >= 8 && regName.value.length <=16)
+				{
+					usernameLength.classList.remove("invalid");
+					usernameLength.classList.add("valid");
+				}
+				else
+				{
+					usernameLength.classList.remove("valid");
+					usernameLength.classList.add("invalid");
+				}
+			}
+		</script>
+		<!-- password validation -->
+		<script>
+			var regPassword= document.getElementById("regPassword");
+			var passwordLetter= document.getElementById("passwordLetter");
+			var passwordCapital= document.getElementById("passwordCapital");
+			var passwordNumber= document.getElementById("passwordNumber");
+			var passwordSpecial= document.getElementById("passwordSpecial");
+			var passwordLength= document.getElementById("passwordLength");
+			
+			// when user clicks on password field, show message box
+			regPassword.onfocus = function() {
+				document.getElementById("passwordMessage").style.display = "block";
+			}
+			// when user clicks outside the password field, hide message box
+			regPassword.onblur = function() {
+				document.getElementById("passwordMessage").style.display = "none";
+			}
+			// when user starts to type something inside teh password field
+			regPassword.onkeyup = function() {
+				// validate lowercase letters
+				var lowerCaseLetters = /[a-z]/g;
+				if (regPassword.value.match(lowerCaseLetters))
+				{
+					passwordLetter.classList.remove("invalid");
+					passwordLetter.classList.add("valid");
+				}
+				else
+				{
+					passwordLetter.classList.remove("valid");
+					passwordLetter.classList.add("invalid");
+				}
+				// validate uppercase letters
+				var upperCaseLetters = /[A-Z]/g;
+				if (regPassword.value.match(upperCaseLetters))
+				{
+					passwordCapital.classList.remove("invalid");
+					passwordCapital.classList.add("valid");
+				}
+				else
+				{
+					passwordCapital.classList.remove("valid");
+					passwordCapital.classList.add("invalid");
+				}
+				// validate nummbers
+				var numbers = /[0-9]/g;
+				if (regPassword.value.match(numbers))
+				{
+					passwordNumber.classList.remove("invalid");
+					passwordNumber.classList.add("valid");
+				}
+				else
+				{
+					passwordNumber.classList.remove("valid");
+					passwordNumber.classList.add("invalid");
+				}
+				// validate special characters
+				var specialChars = /[!@#$%^&*]/g;
+				if (regPassword.value.match(specialChars))
+				{
+					passwordSpecial.classList.remove("invalid");
+					passwordSpecial.classList.add("valid");
+				}
+				else
+				{
+					passwordSpecial.classList.remove("valid");
+					passwordSpecial.classList.add("invalid");
+				}
+				// validate length
+				if (regPassword.value.length >= 8)
+				{
+					passwordLength.classList.remove("invalid");
+					passwordLength.classList.add("valid");
+				}
+				else
+				{
+					passwordLength.classList.remove("valid");
+					passwordLength.classList.add("invalid");
+				}
+			}
+		</script>
+	</div>
+
+	<div class="footer">
+	</div>
+</body>
+</html>
