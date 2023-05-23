@@ -42,10 +42,12 @@ body
   background-color: #ddd;
   color: black;
 }
+
 .topNavRight
 {
 	float: right;
 }
+
 /* related to accessUIDiv*/
 .accessUIDiv
 {
@@ -53,6 +55,7 @@ body
 	justify-content: center;
 	align-items: center;
 }
+
 /* Create three equal columns that floats next to each other */
 .column 
 {
@@ -68,13 +71,16 @@ body
   display: table;
   clear: both;
 }
+
 /*related to the login/register*/
 #login{
 	left: 50px;
 }
+
 #register{
 	left: 450px;
 }
+
 .loginRegisterBox{
 	width: 380px;
 	height: 550px;
@@ -86,6 +92,7 @@ body
 	overflow: hidden;
 	border-radius: 25px;
 }
+
 .buttonBox{
 	width: 220px;
 	margin: 35px auto;
@@ -93,6 +100,7 @@ body
 	box-shadow: 0 0 20px 9px #546E7A;
 	border-radius: 30px;
 }
+
 .toggleButton{
 	padding: 10px 30px;
 	cursor: pointer;
@@ -101,6 +109,7 @@ body
 	outline: none;
 	position: relative;
 }
+
 /* the button that transitions */
 #button{
 	top: 0;
@@ -112,11 +121,13 @@ body
 	border-radius: 30px;
 	transition: .5s;
 }
+
 .inputGroup{
 	position: absolute;
 	width: 280px;
 	transition: .5s;
 }
+
 .inputField{
 	width: 100%;
 	padding: 10px 0;
@@ -126,6 +137,7 @@ body
 	border-bottom: 2px solid #ccc;
 	background: transparent;
 }
+
 .submitButton{
 	width: 50%;
 	padding: 10px 30px;
@@ -137,11 +149,12 @@ body
 	outline: none;
 	border-radius: 30px;
 }
+
 .submitButton:hover{
 	background: #AABFC9;
 }
 
-/* related to checking validity*/
+/* related to checking validity when registering*/
 #userNameMessage,#passwordMessage
 {
 	display: none;
@@ -150,25 +163,30 @@ body
 	padding: 20px;
 	margin-top: 10px;
 }
+
 #userNameMessage p
 {
-	padding 10px 35px;
+	padding: 10px 35px;
 	font-size:18px;
 }
+
 .valid
 {
 	color: green;
 }
+
 .valid:before
 {
 	position: relative;
 	left: -35px;
 	content: "\2611";
 }
+
 .invalid
 {
 	color: red;
 }
+
 .invalid:before
 {
 	position:relative;
@@ -180,9 +198,7 @@ body
 .fancySearchBar
 {
 	position: relative;
-	<!-- left: 50%; -->
 	width:200px;
-	/* transform:  translate(-50%,50%); */
 	background: #272727;
 	height: 40px;
 	border-radius: 40px;
@@ -208,6 +224,7 @@ body
 	/*line-height: 40px;*/
 	width: 0px;
 }
+
  /* related to contacts table */
 #contactsTable
 {
@@ -224,6 +241,7 @@ body
 	border: 2px solid #ddd;
 	padding: 8px;
 }
+
 /* rows */
 #contactsTable tr
 {
@@ -235,6 +253,7 @@ body
 {
 	background-color: #ddd;
 }
+
 /* columns */
 #contactsTable th 
 {
@@ -244,13 +263,14 @@ body
 	background-color: #272727;
 	color: white;
 }
+
 /*related to contacts buttons*/
 .material-icons
 {
 	color: white;
 }
 
-.material-icons: hover
+.material-icons:hover
 {
 	color: black;
 }
@@ -261,6 +281,7 @@ body
 	width: 20%;
 	padding: 10px;
 	background-color: #272727;
+	color: white;
 }
 
 .contactsButton:hover
@@ -268,8 +289,68 @@ body
 	background-color: #ddd;
 	color: black;
 }
+
+/* Extra styles for the cancel button */
+.cancelbtn
+{
+	border-radius: 30px;
+	width: 20%;
+	padding: 10px;
+	background-color: #ff0000;
+	color: white;
+}
+
+.cancelbtn:hover
+{
+	background-color: #ff8f8f;
+	color: black;
+}
+
+.addContactBox 
+{
+	padding: 16px;
+	border-radius: 30px;
+	background: rgba(255, 255, 255, 0.9);
+}
+
+/* related to modal pop up for adding contact */
+.modal 
+{
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modalContent
+{
+	background-color: #fefefe;
+	margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+	border: 1px solid #888;
+	width: 80%; /* Could be more or less, depending on screen size */
+	border-radius: 30px;
+}
+
+/* Add Zoom Animation */
+.animate 
+{
+	-webkit-animation: animatezoom 0.6s;
+	animation: animatezoom 0.6s
+}
+
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media screen and (max-width:600px) {
-  .column {
+@media screen and (max-width:600px) 
+{
+  .column 
+  {
     width: 100%;
   }
+}
