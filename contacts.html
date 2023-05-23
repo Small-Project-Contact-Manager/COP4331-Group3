@@ -43,11 +43,27 @@
 	  
 	  <div class="column">
 		<!-- <h2>Column</h2> -->
-		<button type="button" class="contactsButton"><i class="material-icons">add</i></button>
+		<button type="button" onclick=clickAdd() style="width:auto;" class="contactsButton"><i class="material-icons">add</i></button>
 	  </div>
 	  
 	</div>
 
+	<!--popup to add contacts-->
+	<div id="addContactModal" class="modal">
+		<form class="modalContent animate" action="" method="post">
+			<div class="addContactBox">
+				<h1>Enter Contacts Information</h1>
+				<input type="text" class="inputField" id="addFirstName" placeholder="Enter first name" name="fname" required>
+				<input type="text" class="inputField" id="addLastName" placeholder="Enter last name" name="lname" required>
+				<input type="text" class="inputField" id="addPhone" placeholder="###-###-####" name="phoneNun" required>
+				<input type="email" class="inputField" id="addEmail" placeholder="example@mail.com" name="email" required>
+				<button type="button" onclick="document.getElementById('addContactModal').style.display='none'" class="cancelbtn">Cancel</button>
+				<!--add addContact()-->
+				<button type="button" class="contactsButton">Add</button>
+			</div>
+		</form>		
+	</div>
+	
 	<!-- working on making dynamic to read from database -->		
 	<div class="contactsTable">
 		<table id="contactsTable">
