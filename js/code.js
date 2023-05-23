@@ -28,6 +28,24 @@ function clickRegister()
 	btn.style.left="110px";
 }
 
+/*related to modal pop up for adding contacts */
+function clickAdd()
+{
+	// Get the modal
+	var modal = document.getElementById('addContactModal');
+
+	modal.style.display="block"
+		
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) 
+	{
+		if (event.target == modal) 
+		{
+			modal.style.display = "none";
+		}
+	}
+}
+
 function doLogin()
 {
 	userId = 0;
@@ -85,18 +103,23 @@ function doLogin()
 // work in progress basically copied and pasted doLogin()
 function doRegister()
 {
-	userId = 0;
-	firstName = "";
-	lastName = "";
+	let firstName = document.getElementById("firstName").value;
+	let lastName = document.getElementById("lastName").value;;
 	
-	let login = document.getElementById("loginName").value;
-	let password = document.getElementById("loginPassword").value;
-//	var hash = md5( password );
+	let login = document.getElementById("regName").value;
+	let password = document.getElementById("regPassword").value;
+	//	var hash = md5( password );
 	
 	document.getElementById("loginResult").innerHTML = "";
 
-	let tmp = {login:login,password:password};
-//	var tmp = {login:login,password:hash};
+	let tmp = 
+	{
+		login:login,
+		password:password,
+		firstName:firstName,
+		lastName:lastName
+	};
+	//	var tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify( tmp );
 	
 	let url = urlBase + '/Login.' + extension;
