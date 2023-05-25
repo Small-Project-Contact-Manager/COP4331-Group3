@@ -114,10 +114,10 @@ function doRegister()
 
 	let tmp = 
 	{
-		login:login,
-		password:password,
 		firstName:firstName,
-		lastName:lastName
+		lastName:lastName,
+		login:login,
+		password:password
 	};
 	//	var tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify( tmp );
