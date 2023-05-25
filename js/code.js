@@ -108,7 +108,7 @@ function doRegister()
 	
 	let login = document.getElementById("regName").value;
 	let password = document.getElementById("regPassword").value;
-	//	var hash = md5( password );
+//	var hash = md5( password );
 	
 	document.getElementById("loginResult").innerHTML = "";
 
@@ -119,7 +119,7 @@ function doRegister()
 		login:login,
 		password:password
 	};
-	//	var tmp = {login:login,password:hash};
+//	var tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify( tmp );
 	
 	let url = urlBase + '/Login.' + extension;
@@ -212,13 +212,23 @@ function doLogout()
 /* renamed to addContact */
 function addContact()
 {
-	let newColor = document.getElementById("colorText").value;
-	document.getElementById("colorAddResult").innerHTML = "";
+	let firstName = document.getElementById("addFirstName").value;
+	let lastName = document.getElementById("addLastName").value;
+	let phone = document.getElementById("addPhone").value;
+	let email = document.getElementById("addEmail").value;
+	document.getElementById("addContactResult").innerHTML = "";
 
-	let tmp = {color:newColor,userId,userId};
+	let tmp = 
+	{
+		firstName:firstName,
+		lastName:lastName,
+		phoneNumber:phone,
+		emailAddress:email,
+		userId:userId
+	};
 	let jsonPayload = JSON.stringify( tmp );
 
-	let url = urlBase + '/AddColor.' + extension;
+	let url = urlBase + '/AddContacts.' + extension;
 	
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -229,29 +239,29 @@ function addContact()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				document.getElementById("colorAddResult").innerHTML = "Color has been added";
+				document.getElementById("addContactResult").innerHTML = "Contact has been added";
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("colorAddResult").innerHTML = err.message;
+		document.getElementById("addContactResult").innerHTML = err.message;
 	}
 	
 }
 /* renamed to searchContact */
 function searchContact()
 {
-	let srch = document.getElementById("searchText").value;
-	document.getElementById("colorSearchResult").innerHTML = "";
+	let srch = document.getElementById("searchName").value;
+	document.getElementById("searchResult").innerHTML = "";
 	
-	let colorList = "";
+	let contactList = "";
 
 	let tmp = {search:srch,userId:userId};
 	let jsonPayload = JSON.stringify( tmp );
 
-	let url = urlBase + '/SearchColors.' + extension;
+	let url = urlBase + '/Search.' + extension;
 	
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -262,7 +272,7 @@ function searchContact()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
+				document.getElementById("searchResult").innerHTML = "Contacts(s) has been retrieved";
 				let jsonObject = JSON.parse( xhr.responseText );
 				
 				for( let i=0; i<jsonObject.results.length; i++ )
@@ -281,7 +291,7 @@ function searchContact()
 	}
 	catch(err)
 	{
-		document.getElementById("colorSearchResult").innerHTML = err.message;
+		document.getElementById("searchResult").innerHTML = err.message;
 	}
 	
 }
