@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>CSS Website Layout</title>
+	<title>CONTACTMANAG3R Login Page</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script type="text/javascript" src="js/code.js"></script>
@@ -11,7 +11,7 @@
 
 <body>
 	<div class="header">
-		<h1>ContactManag3r</h1>
+		<h1>CONTACTMANAG3R</h1>
 		<p>Remembering your family, friends, and random people is overrated, let us instead!</p>
 	</div>
 
@@ -26,34 +26,57 @@
 		</div>
 		<!-- login form -->
 		<form id="login" class="inputGroup">
-			<input type="text" class="inputField" id="loginName" placeholder="username" 
+			<label for="loginName">Username</label>
+			<span>
+				<input type="text" class="inputField" id="loginName" placeholder=" username" 
 				name="username" required pattern="(?=.*[a-zA-Z])[a-zA-Z0-9]{8,16}$"/>
-			<input type="password" class="inputField" id="loginPassword" placeholder="password" 
+			</span>
+			
+			<label for="loginPassword">Password</label>
+			<span>
+				<input type="password" class="inputField" id="loginPassword" placeholder=" password" 
 				name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])
 				(?=.*[!@#$%^&*]).{8,}"/>
+			</span>
+			
 			<!-- add onclick="doLogin()" when we get around to that -->
 			<button type="submit" class="submitButton">Login</button>
 			<span id="loginResult"></span>
 		</form>
 		<!-- register form -->
 		<form id="register" class="inputGroup">
-			<input type="text" class="inputField" id="firstName" name="firstName" 
-				placeholder="first name" required/>
-			<input type="text" class="inputField" id="lastName" name="lastName" 
-				placeholder="last name" required/>
-			<input type="text" class="inputField" id="regName" name="regName" 
-				placeholder="username" required pattern="(?=.*[a-zA-Z])[a-zA-Z0-9]{8,16}$"
+			<label for="firstName">First Name</label>
+			<span>
+				<input type="text" class="inputField" id="firstName" name="firstName" 
+				placeholder=" first name" required/>
+			</span>
+			<label for="lastName">Last Name</label>
+			<span>
+				<input type="text" class="inputField" id="lastName" name="lastName" 
+				placeholder=" last name" required/>
+			</span>
+			
+			<label for="regName">Username</label>
+			<span>
+				<input type="text" class="inputField" id="regName" name="regName" 
+				placeholder=" username" required pattern="(?=.*[a-zA-Z])[a-zA-Z0-9]{8,16}$"
 				title="Must be 8 and 16 characters and only letters and numbers are allowed"/>
-			<input type="password" class="inputField" id="regPassword" name="regPassword" 
-				placeholder="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])
+			</span>
+			
+			<label for="regPassword">Password</label>
+			<span>
+				<input type="password" class="inputField" id="regPassword" name="regPassword" 
+				placeholder=" password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])
 				(?=.*[!@#$%^&*]).{8,}" title="Must contain at least one number, one uppercase 
 				letter, one lowercase letter, one special character, and at least 8 or more 
 				characters"/>
+			</span>
+			
 			<!-- add onclick="doRegister()" when we get to that-->
 			<button type="submit" class="submitButton">Register</button>
 			<span id="registerResult"></span>
 			<div id="userNameMessage">
-				<h3>Username must contain the following</h3>
+				<h4>Username must contain:</h4>
 					<p id="usernameLetter" class="invalid">
 						A <b>lowercase</b> letter
 					</p>
@@ -68,7 +91,7 @@
 					</p>
 			</div>
 			<div id="passwordMessage">
-				<h3>Password must contain the following:</h3>
+				<h4>Password must contain:</h4>
 					<p id="passwordLetter" class="invalid">
 						A <b>lowercase</b> letter
 					</p>
@@ -86,7 +109,7 @@
 					</p>
 			</div>
 		</form>
-		<!-- username validation -->
+		<!-- visual username guide -->
 		<script>
 			var regName= document.getElementById("regName");
 			var usernameLetter= document.getElementById("usernameLetter");
@@ -95,15 +118,18 @@
 			var usernameLength= document.getElementById("usernameLength");
 			
 			// when user clicks on username field, show message box
-			regName.onfocus = function() {
+			regName.onfocus = function() 
+			{
 				document.getElementById("userNameMessage").style.display = "block";
 			}
 			// when user clicks username the password field, hide message box
-			regName.onblur = function() {
+			regName.onblur = function() 
+			{
 				document.getElementById("userNameMessage").style.display = "none";
 			}
 			// when user starts to type something inside teh username field
-			regName.onkeyup = function() {
+			regName.onkeyup = function() 
+			{
 				// validate lowercase letters
 				var lowerCaseLetters = /[a-z]/g;
 				if (regName.value.match(lowerCaseLetters))
@@ -153,7 +179,7 @@
 				}
 			}
 		</script>
-		<!-- password validation -->
+		<!-- visual password guide -->
 		<script>
 			var regPassword= document.getElementById("regPassword");
 			var passwordLetter= document.getElementById("passwordLetter");
@@ -163,15 +189,18 @@
 			var passwordLength= document.getElementById("passwordLength");
 			
 			// when user clicks on password field, show message box
-			regPassword.onfocus = function() {
+			regPassword.onfocus = function() 
+			{
 				document.getElementById("passwordMessage").style.display = "block";
 			}
 			// when user clicks outside the password field, hide message box
-			regPassword.onblur = function() {
+			regPassword.onblur = function() 
+			{
 				document.getElementById("passwordMessage").style.display = "none";
 			}
 			// when user starts to type something inside teh password field
-			regPassword.onkeyup = function() {
+			regPassword.onkeyup = function() 
+			{
 				// validate lowercase letters
 				var lowerCaseLetters = /[a-z]/g;
 				if (regPassword.value.match(lowerCaseLetters))
@@ -236,6 +265,7 @@
 	</div>
 
 	<div class="footer">
+		<!--Content goes here-->
 	</div>
 </body>
 </html>
