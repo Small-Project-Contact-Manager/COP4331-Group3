@@ -1,157 +1,200 @@
 * 
 {
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
+	box-sizing: border-box;
 }
 
 body 
 {
-  margin: 0;
+	margin: 0;
+	font-family: verdana;
+	color: #4C4E52;
 }
 
-/* Style the header */
 .header 
 {
-  background-color: #f1f1f1;
-  padding: 20px;
-  text-align: center;
+	background-color: #ffffff;
+	padding: 20px;
+	text-align: center;
 }
 
 /* Style the top navigation bar */
-.topNav 
+.navBar 
 {
-  overflow: hidden;
-  background-color: #333;
+  	overflow: hidden;
+  	background-color: white;
 }
 
 /* Style the topnav links */
-.topNav a 
+.navBar a 
 {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+	float: left;
+	display: block;
+	color: #4C4E52;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 15px;
+	margin-left: 1px;
+  	margin-right: 1px;
 }
 
 /* Change color on hover */
-.topNav a:hover 
+.navBar a:hover:not(.active) 
 {
-  background-color: #ddd;
-  color: black;
+	background-color: #0080FF;
+  	color: #f2f2f2;
+  	border-radius: 10px;
 }
 
-.topNavRight
+/* Visual to let you know your on insert pageg*/
+.navBar a.active
+{
+	background-color:#0080FF;
+	color: #f2f2f2;
+	border-radius: 10px;
+}
+
+.navBarRightAlign
 {
 	float: right;
 }
 
-/* related to accessUIDiv*/
+/* Column container */
+.content {  
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
 .accessUIDiv
 {
 	display: flex;
 	justify-content: center;
-	align-items: center;
 }
 
-/* Create three equal columns that floats next to each other */
+/* Creating columns that will dynamically readjust */
 .column 
 {
-  float: left;
-  width: 33.33%;
-  padding: 15px;
+  	float: left;
+  	width: auto;
+	vertical-align: middle;
+  	padding: 15px;
 }
 
-/* Clear floats after the columns */
-.accessUIDiv:after 
+#login
 {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/*related to the login/register*/
-#login{
 	left: 50px;
 }
 
-#register{
+#register
+{
 	left: 450px;
 }
 
-.loginRegisterBox{
-	width: 380px;
-	height: 550px;
+label
+{
+	float: left;
+	margin-right: 10px;
+	padding: 20px 20px 10px 5px;
+}
+
+span
+{
+	display: block;
+	overflow: hidden;
+}
+
+.loginRegisterBox
+{
+	width: 400px;
+	height: 560px;
 	position: relative;
-	box-shadow: 0 0 20px 9px #546E7A;
-	margin: 6% auto;
+	border-width: thin;
+	border-style: solid;
+	border-color: #808080;
+	margin: 5% auto;
 	background: #FAFAFA;
 	padding: 5px;
 	overflow: hidden;
-	border-radius: 25px;
+	border-radius: 10px;
 }
 
-.buttonBox{
+.buttonBox
+{
 	width: 220px;
 	margin: 35px auto;
 	position: relative;
-	box-shadow: 0 0 20px 9px #546E7A;
-	border-radius: 30px;
+	background-color: #0080FF;
+	border-radius: 10px;
 }
 
-.toggleButton{
+.toggleButton
+{
 	padding: 10px 30px;
 	cursor: pointer;
 	background: transparent;
 	border:0;
 	outline: none;
 	position: relative;
+	color: white;
 }
 
 /* the button that transitions */
-#button{
+#button
+{
 	top: 0;
 	left: 0;
 	position: absolute;
 	width: 110px;
 	height: 100%;
-	background: linear-gradient(to bottom, #272727 0%, #AABFC9 100%);
-	border-radius: 30px;
+	background: #0000FF;
+	border-radius: 10px;
 	transition: .5s;
 }
 
 .inputGroup{
 	position: absolute;
-	width: 280px;
+	width: 300px;
 	transition: .5s;
 }
 
 .inputField{
 	width: 100%;
-	padding: 10px 0;
-	margin: 5px 0;
+	padding: 10px 0px;
+	margin-right: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	box-sizing: border-box;
-	border: none;
-	border-bottom: 2px solid #ccc;
+	border: solid #ccc;
+	border-width: thin;
 	background: transparent;
+	outline: none;
+	border-radius: 10px;
 }
 
-.submitButton{
+.inputField:focus
+{
+	border: 3px solid #0080FF;
+}
+
+.submitButton
+{
 	width: 50%;
 	padding: 10px 30px;
 	cursor: pointer;
 	display: block;
 	margin: auto;
-	background: linear-gradient(to bottom, #272727 0%, #AABFC9 100%);
+	/*background: linear-gradient(to bottom, #272727 0%, #AABFC9 100%);*/
+	background-color: #0000FF;
 	border:0;
 	outline: none;
-	border-radius: 30px;
+	border-radius: 10px;
+	color: white;
 }
 
-.submitButton:hover{
-	background: #AABFC9;
+.submitButton:hover
+{
+	background: #0080FF;
 }
 
 /* related to checking validity when registering*/
@@ -160,14 +203,10 @@ body
 	display: none;
 	color: #000;
 	position: relative;
-	padding: 20px;
+	font-size: 12px;
+	margin-left: 40px;
 	margin-top: 10px;
-}
-
-#userNameMessage p
-{
-	padding: 10px 35px;
-	font-size:18px;
+	margin-bottom: 10px;
 }
 
 .valid
@@ -194,74 +233,87 @@ body
 	content:"\2612";
 }
 
-/* related to fancy search bar */
 .fancySearchBar
 {
-	position: relative;
-	width:200px;
-	background: #272727;
-	height: 40px;
-	border-radius: 40px;
-	padding: 10px;
-	margin: 15px;
-}
-
-.fancySearchBar:hover >.searchInput
-{
-	width: 240px;
-}
-
-.searchInput
-{
-	border:none;
+	border:1px solid #0080ff;
 	background: none;
 	outline:none;
 	float:left;
-	padding: 0;
-	color: white;
+	padding: 10px 10px 10px 10px;
 	font-size: 16px;
 	transition: 0.4s;
 	/*line-height: 40px;*/
-	width: 0px;
+	width: 150px;
+	border-radius: 10px;
 }
 
- /* related to contacts table */
+.fancySearchBar:focus
+{
+	border: 2px solid #0080ff;
+	width: 300px;
+}
+
+/* related to contacts table */
 #contactsTable
 {
-	font-family: Arial, Helvetica, sans-serif;
-	border-collapse: collapse;
+	border-collapse: separate;
 	width: 75%;
 	table-layout: auto;
 	margin-left: auto;
 	margin-right: auto;
+	border-spacing: 0;
 }
-
+  
 #contactsTable td, #contactsTable th 
 {
-	border: 2px solid #ddd;
+	border: 1px solid #ddd;
 	padding: 8px;
 }
-
+  
 /* rows */
 #contactsTable tr
 {
 	background-color: #f2f2f2;
 	text-align: center;
 }
-
+  
 #contactsTable tr:hover 
 {
 	background-color: #ddd;
 }
-
+  
 /* columns */
 #contactsTable th 
 {
 	padding-top: 12px;
 	padding-bottom: 12px;
 	text-align: center;
-	background-color: #272727;
+	background-color: #0080ff;
 	color: white;
+}
+ 
+/* top-left border-radius */
+#contactsTable tr:first-child th:first-child 
+{
+	border-top-left-radius: 10px;
+}
+ 
+/* top-right border-radius */
+#contactsTable tr:first-child th:last-child 
+{
+	border-top-right-radius: 10px;
+}
+ 
+/* bottom-left border-radius */
+#contactsTable tr:last-child td:first-child 
+{
+	border-bottom-left-radius: 10px;
+}
+ 
+/* bottom-right border-radius */
+#contactsTable tr:last-child td:last-child 
+{
+	border-bottom-right-radius: 10px;
 }
 
 /*related to contacts buttons*/
@@ -270,47 +322,45 @@ body
 	color: white;
 }
 
-.material-icons:hover
-{
-	color: black;
-}
-
 .contactsButton
 {
-	border-radius: 30px;
-	width: 20%;
-	padding: 10px;
-	background-color: #272727;
+	border: none;
+	border-radius: 10px;
+	padding: 5px 5px 5px 5px;
+	background-color: #0000ff;
 	color: white;
+	cursor: pointer;
+	font-size: 16px;
 }
 
 .contactsButton:hover
 {
-	background-color: #ddd;
-	color: black;
+	background-color: #0080ff;
 }
 
 /* Extra styles for the cancel button */
 .cancelbtn
 {
-	border-radius: 30px;
-	width: 20%;
-	padding: 10px;
+	border-radius: 10px;
+	padding: 5px 5px 5px 5px;
 	background-color: #ff0000;
+	border: none;
 	color: white;
+	font-size: 16px;
 }
 
 .cancelbtn:hover
 {
 	background-color: #ff8f8f;
-	color: black;
+	color: white;
 }
 
 .addContactBox 
 {
 	padding: 16px;
-	border-radius: 30px;
+	border-radius: 10px;
 	background: rgba(255, 255, 255, 0.9);
+	width: 100%;
 }
 
 /* related to modal pop up for adding contact */
@@ -335,8 +385,8 @@ body
 	background-color: #fefefe;
 	margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
 	border: 1px solid #888;
-	width: 80%; /* Could be more or less, depending on screen size */
-	border-radius: 30px;
+	width: 400px; /* Could be more or less, depending on screen size */
+	border-radius: 10px;
 }
 
 /* Add Zoom Animation */
@@ -346,11 +396,20 @@ body
 	animation: animatezoom 0.6s
 }
 
+.column
+{
+	width:auto;
+}
+
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width:600px) 
 {
-  .column 
-  {
-    width: 100%;
-  }
+	.content, .navbar 
+	{   
+		flex-direction: column;
+	}
+	.navBarRightAlign 
+	{
+		float: left;
+	}
 }
