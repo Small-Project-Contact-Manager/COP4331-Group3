@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>CSS Website Layout</title>
+	<title>CONTACTMANAG3R Contacts Page</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script type="text/javascript" src="js/code.js"></script>
@@ -13,94 +13,112 @@
 
 <body>
 	<div class="header">
-		<h1>ContactManag3r</h1>
+		<h1>CONTACTMANAG3R</h1>
 		<p>Remembering your family, friends, and random people is overrated, let us instead!</p>
 	</div>
 
-	<div class="topNav">
-	  <a href="contacts.html">Contacts</a>
-	  <a href="aboutus.html">About Us</a>
-	  <div class="topNavRight">
+	<div class="navBar">
+	  	<a class="active" href="contacts.html">Contacts</a>
+	  	<a href="aboutus.html">About Us</a>
+	  	<div class="navBarRightAlign">
 			<!-- when get to add ?action=doLogout();" -->
 			<a title="Log Out"  href="#">Log Out</a>
 		</div>
 	</div>
 
-	<div class="accessUIDiv">
-	 <!--  <div class="column">
-		<h2>Column</h2>
-		
-	  </div> -->
-	  
-	  <div class="column">
-		<!-- <h2>Column</h2> -->
-		<div class="fancySearchBar">
-			<!-- try onkeyup and searchContacts() -->
-			<input type="text" class="searchInput" id="searchName" name="searchName" 
-			placeholder="Search here...">
+	<!-- The flexible grid (content) -->
+	<div class="content">
+		<div id="loggedInDiv">
+			<span id="userName"></span><br />
 		</div>
-	  </div>
-	  
-	  <div class="column">
-		<!-- <h2>Column</h2> -->
-		<button type="button" onclick=clickAdd() style="width:auto;" class="contactsButton"><i class="material-icons">add</i></button>
-	  </div>
-	  
-	</div>
-
-	<!--popup to add contacts-->
-	<div id="addContactModal" class="modal">
-		<form class="modalContent animate" action="" method="post">
-			<div class="addContactBox">
-				<h1>Enter Contacts Information</h1>
-				<input type="text" class="inputField" id="addFirstName" placeholder="Enter first name" name="fname" required>
-				<input type="text" class="inputField" id="addLastName" placeholder="Enter last name" name="lname" required>
-				<input type="text" class="inputField" id="addPhone" placeholder="###-###-####" name="phoneNun" required>
-				<input type="email" class="inputField" id="addEmail" placeholder="example@mail.com" name="email" required>
-				<button type="button" onclick="document.getElementById('addContactModal').style.display='none'" class="cancelbtn">Cancel</button>
-				<!--add addContact()-->
-				<button type="button" class="contactsButton">Add</button>
-			</div>
-		</form>		
-	</div>
 	
-	<!-- working on making dynamic to read from database -->		
-	<div class="contactsTable">
-		<table id="contactsTable">
-			<tr>
-				<th>NAME</th>
-				<th>EMAIL</th>
-				<th>PHONE</th>
-				<th>CREATED</th>
-				<th>Edit</th>
-			</tr>
-			<tr>
-				<td>name1</td>
-				<td>mail1</td>
-				<td>phone1</td>
-				<td>created1</td>
-				<td>
-					<button type="button" class="contactsButton"><i class="material-icons">edit_note</i></button>
-					<button type="button" class="contactsButton"><i class="material-icons">delete</i></button>
+		<div class="accessUIDiv">
+			  <div class="column">
+				<!-- try onkeyup and searchContacts() -->
+				<input type="text" class="fancySearchBar" id="searchName" name="searchName" 
+				placeholder="Search here...">
+				<span id="searchResult"></span>
+				<p id="contactList"></p>
+			  </div>
+		  
+			  <div class="column">
+				<button type="button" onclick=clickAdd() class="contactsButton"><i class="material-icons">add</i></button>
+			  </div>
+		</div>
+	
+		<!--popup to add contacts-->
+		<div id="addContactModal" class="modal">
+			<form class="modalContent animate" action="" method="post">
+				<div class="addContactBox">
+					<h3>Enter Contact Information</h3>
+					<label for="addFirstName">First Name</label>
+					<span>
+						<input type="text" class="inputField" id="addFirstName" placeholder=" Enter first name" name="fname" required>
+					</span>
+
+					<label for="addLastName">Last Name</label>
+					<span>
+						<input type="text" class="inputField" id="addLastName" placeholder=" Enter last name" name="lname" required>
+					</span>
 					
-				</td>
-				
-			</tr>
-			<tr>
-				<td>name2</td>
-				<td>mail2</td>
-				<td>phone2</td>
-				<td>created2</td>
-				<td>
-					<button type="button" class="contactsButton"><i class="material-icons">edit_note</i></button>
-					<button type="button" class="contactsButton"><i class="material-icons">delete</i></button>
+					<label for="addPhone">Phone Number</label>
+					<span>
+						<input type="text" class="inputField" id="addPhone" placeholder=" ###-###-####" name="addPhone" required>
+					</span>
 					
-				</td>
-			</tr>
-		</table>
+					<label for="addEmail">Email</label>
+					<span>
+						<input type="email" class="inputField" id="addEmail" placeholder=" example@mail.com" name="addEmail" required>
+					</span>
+					
+					<!--add addContact()-->
+					<button type="button" class="contactsButton" style="float: right">Add</button>
+					<button type="button" onclick="document.getElementById('addContactModal').style.display='none'" class="cancelbtn">Cancel</button>
+					
+					<span id="addContactResult"></span>
+				</div>
+			</form>		
+		</div>
+	
+		<!-- working on making dynamic to read from database -->		
+		<div class="contactsTable">
+			<table id="contactsTable">
+				<tr>
+					<th>NAME</th>
+					<th>EMAIL</th>
+					<th>PHONE</th>
+					<th>CREATED</th>
+					<th>Edit</th>
+				</tr>
+				<tr>
+					<td>name1</td>
+					<td>mail1</td>
+					<td>phone1</td>
+					<td>created1</td>
+					<td>
+						<button type="button" class="contactsButton"><i class="material-icons">edit_note</i></button>
+						<button type="button" class="contactsButton"><i class="material-icons">delete</i></button>
+						
+					</td>
+					
+				</tr>
+				<tr>
+					<td>name2</td>
+					<td>mail2</td>
+					<td>phone2</td>
+					<td>created2</td>
+					<td>
+						<button type="button" class="contactsButton"><i class="material-icons">edit_note</i></button>
+						<button type="button" class="contactsButton"><i class="material-icons">delete</i></button>
+						
+					</td>
+				</tr>
+			</table>
+		</div>
 	</div>
 
 	<div class="footer">
+		<!--COntent goes here-->
 	</div>
 </body>
 </html>
