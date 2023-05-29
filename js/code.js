@@ -305,3 +305,61 @@ function deleteContact()
 {
 	
 }
+
+// Shows all contacts that a user currently has.
+function showContacts()
+{
+	// Create a JSON object to send.
+	let tmp = {userId:userId,search:""};
+	let jsonPayload = JSON.stringify(tmp);
+	
+	// Open and POST to the API to get all contacts.
+	let url = urlBase + '/Search.' + extension;
+	
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	
+	let contactTable = "";
+	
+	// Generate a table or catch an error.
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				let jsonObject = JSON.parse(xhr.responseText);
+				
+				// Note: Might want to add a line here:
+				// document.getElementById("showContactsResult").innerHTML = "Contact(s) retrieved.";
+				
+				// Loop to format information as HTML.
+				for (let i = 0; i < jsonObject.results.length; i++)
+				{
+					// Format contact information into the table.
+					let a = "<td>" + jsonObject.results[i].FirstName + "</td>";
+					let b = "<td>" + jsonObject.results[i].LastName + "</td>";
+					let c = "<td>" + jsonObject.results[i].Email + "</td>";
+					let d = "<td>" + jsonObject.results[i].Phone + "</td>";
+					
+					// Format buttons into the table.
+					let e = "<button type='button' class='contactsButton'><i class='material-icons'>edit_note</i></button>";
+					let f = "<button type='button' class='contactsButton'><i class='material-icons'>delete</i></button>";
+					let g = "<td>" + e + f + "</td>";
+
+					contactTable += "<tr>" + a + b + c + d + g + "</tr>"
+				}
+				
+				// Transforms this element in HTML document into a contact table.
+				document.getElementById("tBody").innerHTML = contactTable;
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		// Note: Might want to add a line here:
+		// document.getElementById("showContactsResult").innerHTML = err.message;
+	}
+}
