@@ -104,7 +104,7 @@ function doLogin()
 function doRegister()
 {
 	let firstname = document.getElementById("firstName").value;
-	let lastname = document.getElementById("lastName").value;;
+	let lastname = document.getElementById("lastName").value;
 	
 	let login = document.getElementById("regName").value;
 	let password = document.getElementById("regPassword").value;
