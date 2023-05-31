@@ -11,7 +11,7 @@
       rel="stylesheet">
 </head>
 
-<body onload="showContacts();">
+<body>
 	<div class="header">
 		<h1>CONTACTMANAG3R</h1>
 		<p>Remembering your family, friends, and random people is overrated, let us instead!</p>
@@ -84,36 +84,14 @@
 		<div class="contactsTable">
 			<table id="contactsTable">
 				<tr>
-					<th>NAME</th>
+					<th>FIRST NAME</th>
+					<th>LAST NAME</th>
 					<th>EMAIL</th>
 					<th>PHONE</th>
-					<th>CREATED</th>
-					<th>Edit</th>
-				</tr>
-				<tr>
-					<td>name1</td>
-					<td>mail1</td>
-					<td>phone1</td>
-					<td>created1</td>
-					<td>
-						<button type="button" class="contactsButton"><i class="material-icons">edit_note</i></button>
-						<button type="button" class="contactsButton"><i class="material-icons">delete</i></button>
-						
-					</td>
-					
-				</tr>
-				<tr>
-					<td>name2</td>
-					<td>mail2</td>
-					<td>phone2</td>
-					<td>created2</td>
-					<td>
-						<button type="button" class="contactsButton"><i class="material-icons">edit_note</i></button>
-						<button type="button" class="contactsButton"><i class="material-icons">delete</i></button>
-						
-					</td>
+					<th>EDIT</th>
 				</tr>
 				<tbody id="tBody"></tbody>
+				<script> readCookie(); showContacts(); </script>
 			</table>
 		</div>
 	</div>
