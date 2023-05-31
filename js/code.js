@@ -100,29 +100,29 @@ function doLogin()
 
 }
 
-// work in progress basically copied and pasted doLogin()
+// Function to register for the contact manager.
 function doRegister()
 {
-	let firstName = document.getElementById("firstName").value;
-	let lastName = document.getElementById("lastName").value;;
+	let firstname = document.getElementById("firstName").value;
+	let lastname = document.getElementById("lastName").value;;
 	
 	let login = document.getElementById("regName").value;
 	let password = document.getElementById("regPassword").value;
 //	var hash = md5( password );
 	
-	document.getElementById("loginResult").innerHTML = "";
+	document.getElementById("registerResult").innerHTML = "";
 
 	let tmp = 
 	{
-		firstName:firstName,
-		lastName:lastName,
+		firstName:firstname,
+		lastName:lastname,
 		login:login,
 		password:password
 	};
 //	var tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify( tmp );
 	
-	let url = urlBase + '/Login.' + extension;
+	let url = urlBase + '/Register.' + extension;
 
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -138,12 +138,12 @@ function doRegister()
 		
 				if( userId < 1 )
 				{		
-					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					document.getElementById("registerResult").innerHTML = "Login is taken";
 					return;
 				}
 		
-				firstName = jsonObject.firstName;
-				lastName = jsonObject.lastName;
+				firstName = firstname;
+				lastName = lastname;
 
 				saveCookie();
 	
@@ -157,7 +157,6 @@ function doRegister()
 	{
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
-
 }
 
 function saveCookie()
