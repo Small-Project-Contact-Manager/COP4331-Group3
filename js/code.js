@@ -310,9 +310,6 @@ function deleteContact()
 // Shows all contacts that a user currently has.
 function showContacts()
 {
-	// Read the cookie.
-	readCookie();
-	
 	// Create a JSON object to send.
 	let tmp = {userId:userId,search:""};
 	let jsonPayload = JSON.stringify(tmp);
