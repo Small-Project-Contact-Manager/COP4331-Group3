@@ -208,7 +208,8 @@ function doLogout()
 	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 	window.location.href = "index.html";
 }
-/* renamed to addContact */
+
+// Adds a contact for the current user.
 function addContact()
 {
 	let firstName = document.getElementById("addFirstName").value;
@@ -239,6 +240,7 @@ function addContact()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				document.getElementById("addContactResult").innerHTML = "Contact has been added";
+				showContacts();
 			}
 		};
 		xhr.send(jsonPayload);
@@ -333,24 +335,27 @@ function showContacts()
 			{
 				let jsonObject = JSON.parse(xhr.responseText);
 				
-				// Note: Might want to add a line here:
-				// document.getElementById("showContactsResult").innerHTML = "Contact(s) retrieved.";
+				// Check if no results exist.
+				if (!jsonObject.hasOwnProperty("results"))
+				{
+					return;
+				}
 				
 				// Loop to format information as HTML.
 				for (let i = 0; i < jsonObject.results.length; i++)
 				{
 					// Format contact information into the table.
-					let a = "<td>" + jsonObject.results[i].FirstName + "</td>";
-					let b = "<td>" + jsonObject.results[i].LastName + "</td>";
-					let c = "<td>" + jsonObject.results[i].Email + "</td>";
-					let d = "<td>" + jsonObject.results[i].Phone + "</td>";
-					
-					// Format buttons into the table.
-					let e = "<button type='button' class='contactsButton'><i class='material-icons'>edit_note</i></button>";
-					let f = "<button type='button' class='contactsButton'><i class='material-icons'>delete</i></button>";
-					let g = "<td>" + e + f + "</td>";
-
-					contactTable += "<tr>" + a + b + c + d + g + "</tr>"
+					contactTable +=
+					`
+					<tr>
+						<td> ${jsonObject.results[i].FirstName} </td>
+						<td> ${jsonObject.results[i].LastName} </td>
+						<td> ${jsonObject.results[i].Email} </td>
+						<td> ${jsonObject.results[i].Phone} </td>
+						<td> <button type="button" class="contactsButton"><i class="material-icons">edit_note</i></button>
+						<button type="button" class="contactsButton"><i class="material-icons">delete</i></button> </td>
+					</tr>
+					`;
 				}
 				
 				// Transforms this element in HTML document into a contact table.
