@@ -46,6 +46,42 @@ function clickAdd()
 	}
 }
 
+/*related to modal pop up for modifying contacts */
+function clickEdit()
+{
+	// Get the modal
+	var modal = document.getElementById('editContactModal');
+
+	modal.style.display="block"
+		
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) 
+	{
+		if (event.target == modal) 
+		{
+			modal.style.display = "none";
+		}
+	}
+}
+
+/*related to modal pop up for confirming delete contacts */
+function clickDelete()
+{
+	// Get the modal
+	var modal = document.getElementById('deleteContactModal');
+
+	modal.style.display="block"
+		
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) 
+	{
+		if (event.target == modal) 
+		{
+			modal.style.display = "none";
+		}
+	}
+}
+
 function doLogin()
 {
 	userId = 0;
