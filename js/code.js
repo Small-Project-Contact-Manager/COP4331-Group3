@@ -385,8 +385,8 @@ function showContacts()
 						<td> ${jsonObject.results[i].LastName} </td>
 						<td> ${jsonObject.results[i].Email} </td>
 						<td> ${jsonObject.results[i].Phone} </td>
-						<td> <button type="button" class="contactsButton"><i class="material-icons">edit_note</i></button>
-						<button type="button" class="contactsButton"><i class="material-icons">delete</i></button> </td>
+						<td> <button type="button" onclick="clickEdit()" class="contactsButton"><i class="material-icons">edit_note</i></button>
+						<button type="button" onclick="clickDelete()" class="contactsButton"><i class="material-icons">delete</i></button> </td>
 					</tr>
 					`;
 				}
