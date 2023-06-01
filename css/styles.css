@@ -363,6 +363,23 @@ span
 	width: 100%;
 }
 
+.editContactBox 
+{
+	padding: 16px;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.9);
+	width: 100%;
+}
+
+.deleteContactBox 
+{
+	padding: 16px;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.9);
+	width: auto;
+	text-align: center;
+}
+
 /* related to modal pop up for adding contact */
 .modal 
 {
