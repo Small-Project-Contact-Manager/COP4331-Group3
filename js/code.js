@@ -338,9 +338,51 @@ function changeContact()
 	
 }
 
-function deleteContact()
+// Deletes a contact for a user.
+function deleteContact(num)
 {
+	let info = document.getElementById(`ContactInfo${num}`);
 	
+	// Need to still add confirmation for delete.
+	
+	// Create a JSON object to send.
+	fName = info.getAttribute("fname");
+	lName = info.getAttribute("lname");
+	contactId = info.getAttribute("contactid");
+	
+	let tmp =
+	{
+		firstName:fName,
+		lastName:lName,
+		userId:userId,
+		id:contactId
+	};
+	
+	let jsonPayload = JSON.stringify(tmp);
+	
+	// Open and POST to the delete API.
+	let url = urlBase + '/DeleteContacts.' + extension;
+	
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	
+	// Delete from the database or return an error.
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				showContacts();
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		// Could add something here.
+	}
 }
 
 // Shows all contacts that a user currently has.
@@ -371,6 +413,7 @@ function showContacts()
 				// Check if no results exist.
 				if (!jsonObject.hasOwnProperty("results"))
 				{
+					document.getElementById("tBody").innerHTML = "";
 					return;
 				}
 				
@@ -380,6 +423,12 @@ function showContacts()
 					// Format contact information into the table.
 					contactTable +=
 					`
+					<span id="ContactInfo${i}"
+					fname="${jsonObject.results[i].FirstName}"
+					lname="${jsonObject.results[i].LastName}"
+					contactid="${jsonObject.results[i].ID}"
+					></span>
+					
 					<tr>
 						<td> ${jsonObject.results[i].FirstName} </td>
 						<td> ${jsonObject.results[i].LastName} </td>
