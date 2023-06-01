@@ -17,6 +17,17 @@ body
 	text-align: center;
 }
 
+.logo
+{
+	height: 100px;
+	border-radius: 10px;
+}
+
+.catchPhrase
+{
+	font-size: 12px;
+}
+
 /* Style the top navigation bar */
 .navBar 
 {
