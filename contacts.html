@@ -79,6 +79,50 @@
 				</div>
 			</form>		
 		</div>
+		
+		<!--popup to modify contacts-->
+		<div id="editContactModal" class="modal">
+			<form class="modalContent animate" action="" method="post">
+				<div class="editContactBox">
+					<label for="modifyFirstName">First Name</label>
+					<span>
+						<input type="text" class="inputField" id="editFirstName" placeholder=" Enter first name" name="editFirstName" required>
+					</span>
+
+					<label for="modifyLastName">Last Name</label>
+					<span>
+						<input type="text" class="inputField" id="editLastName" placeholder=" Enter last name" name="editLastName" required>
+					</span>
+					
+					<label for="modifyPhone">Phone Number</label>
+					<span>
+						<input type="text" class="inputField" id="editPhone" placeholder=" ###-###-####" name="editPhone" required>
+					</span>
+					
+					<label for="modifyEmail">Email</label>
+					<span>
+						<input type="email" class="inputField" id="editEmail" placeholder=" example@mail.com" name="editEmail" required>
+					</span>
+					
+					<!--add editContact()-->
+					<button type="button" class="contactsButton" style="float: right">Edit</button>
+					<button type="button" onclick="document.getElementById('editContactModal').style.display='none'" class="cancelbtn">Cancel</button>
+				</div>
+			</form>		
+		</div>
+
+		<!--popup to confirm delete contacts-->
+		<div id="deleteContactModal" class="modal">
+			<form class="modalContent animate" action="" method="post">
+				<div class="deleteContactBox">
+					<h2>Are you sure?</h2>
+					<!--add deleteContact()-->
+					
+					<button type="button" onclick="document.getElementById('deleteContactModal').style.display='none'" class="cancelbtn">Cancel</button>
+					<button type="button" class="contactsButton" >Delete</button>
+				</div>
+			</form>		
+		</div>
 	
 		<!-- working on making dynamic to read from database -->		
 		<div class="contactsTable">
