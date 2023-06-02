@@ -142,7 +142,7 @@ span
 .loginRegisterBox
 {
 	width: 400px;
-	height: 560px;
+	height: 565px;
 	position: relative;
 	border-width: thin;
 	border-style: solid;
@@ -239,9 +239,9 @@ span
 	color: #000;
 	position: relative;
 	font-size: 12px;
-	margin-left: 40px;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-left: 65px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .valid
@@ -277,7 +277,6 @@ span
 	padding: 10px 10px 10px 10px;
 	font-size: 16px;
 	transition: 0.4s;
-	/*line-height: 40px;*/
 	width: 150px;
 	border-radius: 10px;
 }
@@ -446,11 +445,6 @@ span
 {
 	-webkit-animation: animatezoom 0.6s;
 	animation: animatezoom 0.6s
-}
-
-.column
-{
-	width:auto;
 }
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
