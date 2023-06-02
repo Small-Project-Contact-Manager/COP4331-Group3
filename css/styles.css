@@ -83,6 +83,17 @@ body
 	justify-content: center;
 }
 
+#loggedInDiv
+{
+	display: flex;
+	justify-content: center;
+	background-color: #0080FF;
+	color: white;
+	margin: 10px 10px 10px 1px;
+	width: 20%;
+	border-radius: 10px;
+}
+
 /* Creating columns that will dynamically readjust */
 .column 
 {
