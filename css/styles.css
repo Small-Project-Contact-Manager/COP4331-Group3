@@ -52,7 +52,7 @@ body
 /* Change color on hover */
 .navBar a:hover:not(.active) 
 {
-	background-color: #0080FF;
+	background-color: #339DFF;
   	color: #f2f2f2;
   	border-radius: 10px;
 }
@@ -60,7 +60,7 @@ body
 /* Visual to let you know your on insert pageg*/
 .navBar a.active
 {
-	background-color:#0080FF;
+	background-color:#339DFF;
 	color: #f2f2f2;
 	border-radius: 10px;
 }
@@ -90,6 +90,30 @@ body
   	width: auto;
 	vertical-align: middle;
   	padding: 15px;
+}
+
+/* formatting for loginRegisterBox*/
+.col-25 
+{
+    	float: left;
+    	width: 25%;
+    	margin-top: 6px;
+	margin-right: 15px;
+}
+
+.col-75 
+{
+    	float: left;
+    	width: 70%;
+    	margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row::after 
+{
+	content: "";
+    	display: table;
+ 	clear: both;
 }
 
 #login
@@ -135,7 +159,7 @@ span
 	width: 220px;
 	margin: 35px auto;
 	position: relative;
-	background-color: #0080FF;
+	background-color: #339DFF;
 	border-radius: 10px;
 }
 
@@ -196,7 +220,7 @@ span
 	display: block;
 	margin: auto;
 	/*background: linear-gradient(to bottom, #272727 0%, #AABFC9 100%);*/
-	background-color: #0000FF;
+	background-color: #339DFF;
 	border:0;
 	outline: none;
 	border-radius: 10px;
@@ -205,7 +229,7 @@ span
 
 .submitButton:hover
 {
-	background: #0080FF;
+	background: #0000FF;
 }
 
 /* related to checking validity when registering*/
@@ -338,7 +362,7 @@ span
 	border: none;
 	border-radius: 10px;
 	padding: 5px 5px 5px 5px;
-	background-color: #0000ff;
+	background-color: #339DFF;
 	color: white;
 	cursor: pointer;
 	font-size: 16px;
@@ -346,7 +370,7 @@ span
 
 .contactsButton:hover
 {
-	background-color: #0080ff;
+	background-color: #0000FF;
 }
 
 /* Extra styles for the cancel button */
@@ -354,7 +378,7 @@ span
 {
 	border-radius: 10px;
 	padding: 5px 5px 5px 5px;
-	background-color: #ff0000;
+	background-color: #ff8f8f;
 	border: none;
 	color: white;
 	font-size: 16px;
@@ -362,7 +386,7 @@ span
 
 .cancelbtn:hover
 {
-	background-color: #ff8f8f;
+	background-color: #ff0000;
 	color: white;
 }
 
@@ -439,5 +463,10 @@ span
 	.navBarRightAlign 
 	{
 		float: left;
+	}
+	.col-25, .col-75 
+	{
+		width: 100%;
+		margin-top: 0;
 	}
 }
