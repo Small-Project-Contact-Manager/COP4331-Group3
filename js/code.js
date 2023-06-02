@@ -65,12 +65,19 @@ function clickEdit()
 }
 
 /*related to modal pop up for confirming delete contacts */
-function clickDelete()
+function clickDelete(num)
 {
 	// Get the modal
 	var modal = document.getElementById('deleteContactModal');
 
 	modal.style.display="block"
+
+	// if user clicks on delete will delete
+	document.getElementById('yesDelete').onclick = function() 
+	{
+
+		deleteContact(num);
+	}
 		
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) 
@@ -435,7 +442,7 @@ function showContacts()
 						<td> ${jsonObject.results[i].Email} </td>
 						<td> ${jsonObject.results[i].Phone} </td>
 						<td> <button type="button" onclick="clickEdit();" class="contactsButton"><i class="material-icons">edit_note</i></button>
-						<button type="button" onclick="deleteContact(${i});" class="contactsButton"><i class="material-icons">delete</i></button> </td>
+						<button type="button" onclick="clickDelete(${i});" class="contactsButton"><i class="material-icons">delete</i></button> </td>
 					</tr>
 					`;
 				}
