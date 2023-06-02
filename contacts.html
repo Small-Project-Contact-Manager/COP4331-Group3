@@ -52,31 +52,49 @@
 			<form class="modalContent animate" action="" method="post">
 				<div class="addContactBox">
 					<h3>Enter Contact Information</h3>
-					<label for="addFirstName">First Name</label>
-					<span>
-						<input type="text" class="inputField" id="addFirstName" placeholder=" Enter first name" name="fname" required>
-					</span>
+					<div class="row">
+						<div class="col-25">
+							<label for="addFirstName">First&nbsp;Name</label>
+						</div>
+						<div class="col-75">
+							<input type="text" class="inputField" id="addFirstName" placeholder=" Enter first name" name="fname" required>
+						</div>
+					</div>
 
-					<label for="addLastName">Last Name</label>
-					<span>
-						<input type="text" class="inputField" id="addLastName" placeholder=" Enter last name" name="lname" required>
-					</span>
+					<div class="row">
+						<div class="col-25">
+							<label for="addLastName">Last&nbsp;Name</label>
+						</div>
+						<div class="col-75">
+							<input type="text" class="inputField" id="addLastName" placeholder=" Enter last name" name="lname" required>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-25">
+							<label for="addPhone">Phone</label>
+						</div>
+						<div class="col-75">
+							<input type="text" class="inputField" id="addPhone" placeholder=" ###-###-####" name="addPhone" required>
+						</div>
+					</div>
 					
-					<label for="addPhone">Phone Number</label>
-					<span>
-						<input type="text" class="inputField" id="addPhone" placeholder=" ###-###-####" name="addPhone" required>
-					</span>
+					<div class="row">
+						<div class="col-25">
+							<label for="addEmail">Email</label>
+						</div>
+						<div class="col-75">
+							<input type="email" class="inputField" id="addEmail" placeholder=" example@mail.com" name="addEmail" required>
+						</div>
+					</div>
 					
-					<label for="addEmail">Email</label>
-					<span>
-						<input type="email" class="inputField" id="addEmail" placeholder=" example@mail.com" name="addEmail" required>
-					</span>
-					
-					<!--add addContact()-->
-					<button type="button" class="contactsButton" style="float: right" onclick="addContact();">Add</button>
-					<button type="button" onclick="document.getElementById('addContactModal').style.display='none'" class="cancelbtn">Cancel</button>
-					
-					<span id="addContactResult"></span>
+					<div class="row">
+						<!--add addContact()-->
+						<button type="button" class="contactsButton" style="float: right">Add</button>
+						<button type="button" onclick="document.getElementById('addContactModal').style.display='none'" class="cancelbtn">Cancel</button>
+						
+						<span id="addContactResult"></span>
+					</div>
 				</div>
 			</form>		
 		</div>
@@ -85,29 +103,47 @@
 		<div id="editContactModal" class="modal">
 			<form class="modalContent animate" action="" method="post">
 				<div class="editContactBox">
-					<label for="modifyFirstName">First Name</label>
-					<span>
-						<input type="text" class="inputField" id="editFirstName" placeholder=" Enter first name" name="editFirstName" required>
-					</span>
+					<div class="row">
+						<div class="col-25">
+							<label for="modifyFirstName">First&nbsp;Name</label>
+						</div>
+						<div class="col-75">
+							<input type="text" class="inputField" id="editFirstName" placeholder=" Enter first name" name="editFirstName" required>
+						</div>
+					</div>
 
-					<label for="modifyLastName">Last Name</label>
-					<span>
-						<input type="text" class="inputField" id="editLastName" placeholder=" Enter last name" name="editLastName" required>
-					</span>
+					<div class="row">
+						<div class="col-25">
+							<label for="modifyLastName">Last&nbsp;Name</label>
+						</div>
+						<div class="col-75">
+							<input type="text" class="inputField" id="editLastName" placeholder=" Enter last name" name="editLastName" required>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-25">
+							<label for="modifyPhone">Phone</label>
+						</div>
+						<div class="col-75">
+							<input type="text" class="inputField" id="editPhone" placeholder=" ###-###-####" name="editPhone" required>
+						</div>
+					</div>
 					
-					<label for="modifyPhone">Phone Number</label>
-					<span>
-						<input type="text" class="inputField" id="editPhone" placeholder=" ###-###-####" name="editPhone" required>
-					</span>
+					<div class="row">
+						<div class="col-25">
+							<label for="modifyEmail">Email</label>
+						</div>
+						<div class="col-75">
+							<input type="email" class="inputField" id="editEmail" placeholder=" example@mail.com" name="editEmail" required>
+						</div>
+					</div>
 					
-					<label for="modifyEmail">Email</label>
-					<span>
-						<input type="email" class="inputField" id="editEmail" placeholder=" example@mail.com" name="editEmail" required>
-					</span>
-					
-					<!--add editContact()-->
-					<button type="button" class="contactsButton" style="float: right">Edit</button>
-					<button type="button" onclick="document.getElementById('editContactModal').style.display='none'" class="cancelbtn">Cancel</button>
+					<div class="row">
+						<!--add editContact()-->
+						<button type="button" class="contactsButton" style="float: right">Edit</button>
+						<button type="button" onclick="document.getElementById('editContactModal').style.display='none'" class="cancelbtn">Cancel</button>
+					</div>
 				</div>
 			</form>		
 		</div>
