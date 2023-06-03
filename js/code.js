@@ -302,47 +302,34 @@ function addContact()
 /* renamed to searchContact */
 function searchContact()
 {
-	let srch = document.getElementById("searchName").value;
-	document.getElementById("searchResult").innerHTML = "";
-	
-	let contactList = "";
-
-	let tmp = {search:srch,userId:userId};
-	let jsonPayload = JSON.stringify( tmp );
-
-	let url = urlBase + '/Search.' + extension;
-	
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
+	let input = document.getElementById("searchName");
+	let filter = input.value.toUpperCase();
+	let table = document.getElementById("contactsTable");
+	let tr = table.getElementsByTagName("tr");
+  
+	// Loop through all table rows, and hide those who don't match the search query
+	for (let i = 0; i < tr.length; i++) 
 	{
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
+	  	let tdFirst = tr[i].getElementsByTagName("td")[0]; // first name
+	  	let tdLast = tr[i].getElementsByTagName("td")[1]; // last name
+
+	  	if (tdFirst || tdLast) 
+	  	{
+			let txtValueFirst = tdFirst.textContent || tdFirst.innerText;
+			let txtValueLast = tdLast.textContent || tdLast.innerText;
+
+			tr[i].style.display = "none";
+			
+			if (txtValueFirst.toUpperCase().indexOf(filter) > -1) 
 			{
-				document.getElementById("searchResult").innerHTML = "Contacts(s) has been retrieved";
-				let jsonObject = JSON.parse( xhr.responseText );
-				
-				for( let i=0; i<jsonObject.results.length; i++ )
-				{
-					colorList += jsonObject.results[i];
-					if( i < jsonObject.results.length - 1 )
-					{
-						colorList += "<br />\r\n";
-					}
-				}
-				
-				document.getElementsByTagName("p")[0].innerHTML = colorList;
+				tr[i].style.display = "";
 			}
-		};
-		xhr.send(jsonPayload);
+			if (txtValueLast.toUpperCase().indexOf(filter) > -1)
+			{
+				tr[i].style.display = "";
+			}
+	  	}
 	}
-	catch(err)
-	{
-		document.getElementById("searchResult").innerHTML = err.message;
-	}
-	
 }
 
 // Changes a contact for a user.
