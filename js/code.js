@@ -265,6 +265,7 @@ function addContact()
 	let phone = document.getElementById("addPhone").value;
 	let email = document.getElementById("addEmail").value;
 	document.getElementById("addContactResult").innerHTML = "";
+	document.getElementById('addContactModal').style.display='none';
 
 	let tmp = 
 	{
@@ -310,13 +311,17 @@ function searchContact()
 	// Loop through all table rows, and hide those who don't match the search query
 	for (let i = 0; i < tr.length; i++) 
 	{
-	  	let tdFirst = tr[i].getElementsByTagName("td")[0]; // first name
-	  	let tdLast = tr[i].getElementsByTagName("td")[1]; // last name
+	  let tdFirst = tr[i].getElementsByTagName("td")[0]; // first name
+	  let tdLast = tr[i].getElementsByTagName("td")[1]; // last name
+	  let tdMail = tr[i].getElementsByTagName("td")[2]; // email
+	  let tdPhone = tr[i].getElementsByTagName("td")[3]; // phone
 
-	  	if (tdFirst || tdLast) 
-	  	{
+	  if (tdFirst || tdLast || tdMail || tdPhone) 
+	  {
 			let txtValueFirst = tdFirst.textContent || tdFirst.innerText;
 			let txtValueLast = tdLast.textContent || tdLast.innerText;
+			let txtValueMail = tdMail.textContent || tdMail.innerText;
+			let txtValuePhone = tdPhone.textContent || tdPhone.innerText;
 
 			tr[i].style.display = "none";
 			
@@ -328,8 +333,17 @@ function searchContact()
 			{
 				tr[i].style.display = "";
 			}
-	  	}
+			if (txtValueMail.toUpperCase().indexOf(filter) > -1)
+			{
+				tr[i].style.display = "";
+			}
+			if (txtValuePhone.toUpperCase().indexOf(filter) > -1)
+			{
+				tr[i].style.display = "";
+			}
+	  }
 	}
+	
 }
 
 // Changes a contact for a user.
@@ -338,6 +352,7 @@ function changeContact(num)
 	console.log("successful function call");
 	
 	let info = document.getElementById(`ContactInfo${num}`);
+	document.getElementById('editContactModal').style.display='none';
 
 	// Create a JSON object to send.
 	newFirst = document.getElementById("editFirstName").value;
@@ -387,6 +402,7 @@ function changeContact(num)
 function deleteContact(num)
 {
 	let info = document.getElementById(`ContactInfo${num}`);
+	document.getElementById('deleteContactModal').style.display='none';
 	
 	// Create a JSON object to send.
 	fName = info.getAttribute("fname");
