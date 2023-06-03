@@ -47,13 +47,18 @@ function clickAdd()
 }
 
 /*related to modal pop up for modifying contacts */
-function clickEdit()
+function clickEdit(num)
 {
 	// Get the modal
 	var modal = document.getElementById('editContactModal');
 
 	modal.style.display="block"
-		
+	
+	document.getElementById('yesEdit').onclick = function()
+	{
+		changeContact(num);
+	}
+	
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) 
 	{
@@ -340,17 +345,61 @@ function searchContact()
 	
 }
 
-function changeContact()
+// Changes a contact for a user.
+function changeContact(num)
 {
+	console.log("successful function call");
 	
+	let info = document.getElementById(`ContactInfo${num}`);
+
+	// Create a JSON object to send.
+	newFirst = document.getElementById("editFirstName").value;
+	newLast = document.getElementById("editLastName").value;
+	newEmail = document.getElementById("editEmail").value;
+	newPhone = document.getElementById("editPhone").value;
+	contactId = info.getAttribute("contactid");
+	
+	let tmp =
+	{
+		newFirstName:newFirst,
+		newLastName:newLast,
+		newEmailAddr:newEmail,
+		newPhoneNum:newPhone,
+		id:contactId
+	};
+	
+	let jsonPayload = JSON.stringify(tmp);
+	
+	// Open and POST to the edit API.
+	let url = urlBase + '/UpdateContacts.' + extension;
+	
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	
+	// Edit the contact or return an error.
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				// Reload the contact table after editing.
+				showContacts();
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		// Could add error message here.
+	}
 }
 
 // Deletes a contact for a user.
 function deleteContact(num)
 {
 	let info = document.getElementById(`ContactInfo${num}`);
-	
-	// Need to still add confirmation for delete.
 	
 	// Create a JSON object to send.
 	fName = info.getAttribute("fname");
@@ -388,7 +437,7 @@ function deleteContact(num)
 	}
 	catch(err)
 	{
-		// Could add something here.
+		// Could add error message here.
 	}
 }
 
@@ -441,7 +490,7 @@ function showContacts()
 						<td> ${jsonObject.results[i].LastName} </td>
 						<td> ${jsonObject.results[i].Email} </td>
 						<td> ${jsonObject.results[i].Phone} </td>
-						<td> <button type="button" onclick="clickEdit();" class="contactsButton"><i class="material-icons">edit_note</i></button>
+						<td> <button type="button" onclick="clickEdit(${i});" class="contactsButton"><i class="material-icons">edit_note</i></button>
 						<button type="button" onclick="clickDelete(${i});" class="contactsButton"><i class="material-icons">delete</i></button> </td>
 					</tr>
 					`;
