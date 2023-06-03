@@ -69,15 +69,6 @@
 							<input type="text" class="inputField" id="addLastName" placeholder=" Enter last name" name="lname" required>
 						</div>
 					</div>
-
-					<div class="row">
-						<div class="col-25">
-							<label for="addPhone">Phone</label>
-						</div>
-						<div class="col-75">
-							<input type="text" class="inputField" id="addPhone" placeholder=" ###-###-####" name="addPhone" required>
-						</div>
-					</div>
 					
 					<div class="row">
 						<div class="col-25">
@@ -89,8 +80,17 @@
 					</div>
 					
 					<div class="row">
+						<div class="col-25">
+							<label for="addPhone">Phone</label>
+						</div>
+						<div class="col-75">
+							<input type="text" class="inputField" id="addPhone" placeholder=" ###-###-####" name="addPhone" required>
+						</div>
+					</div>
+					
+					<div class="row">
 						<!--add addContact()-->
-						<button type="button" class="contactsButton" style="float: right">Add</button>
+						<button type="button" class="contactsButton" style="float: right" onclick="addContact();">Add</button>
 						<button type="button" onclick="document.getElementById('addContactModal').style.display='none'" class="cancelbtn">Cancel</button>
 						
 						<span id="addContactResult"></span>
@@ -120,15 +120,6 @@
 							<input type="text" class="inputField" id="editLastName" placeholder=" Enter last name" name="editLastName" required>
 						</div>
 					</div>
-
-					<div class="row">
-						<div class="col-25">
-							<label for="modifyPhone">Phone</label>
-						</div>
-						<div class="col-75">
-							<input type="text" class="inputField" id="editPhone" placeholder=" ###-###-####" name="editPhone" required>
-						</div>
-					</div>
 					
 					<div class="row">
 						<div class="col-25">
@@ -140,8 +131,17 @@
 					</div>
 					
 					<div class="row">
+						<div class="col-25">
+							<label for="modifyPhone">Phone</label>
+						</div>
+						<div class="col-75">
+							<input type="text" class="inputField" id="editPhone" placeholder=" ###-###-####" name="editPhone" required>
+						</div>
+					</div>
+					
+					<div class="row">
 						<!--add editContact()-->
-						<button type="button" class="contactsButton" style="float: right">Edit</button>
+						<button type="button" class="contactsButton" style="float: right" id="yesEdit">Edit</button>
 						<button type="button" onclick="document.getElementById('editContactModal').style.display='none'" class="cancelbtn">Cancel</button>
 					</div>
 				</div>
