@@ -267,6 +267,12 @@ function addContact()
 	document.getElementById("addContactResult").innerHTML = "";
 	document.getElementById('addContactModal').style.display='none';
 
+	if (!validAddContact(firstName, lastName, phone, email)) {
+        console.log("INVALID FIRST NAME, LAST NAME, PHONE, OR EMAIL SUBMITTED");
+		alert("Invalid contact information!");
+        return;
+	}
+
 	let tmp = 
 	{
 		firstName:firstName,
@@ -510,4 +516,68 @@ function showContacts()
 		// Note: Might want to add a line here:
 		// document.getElementById("showContactsResult").innerHTML = err.message;
 	}
+}
+
+// validate contact function for the contacts page
+function validAddContact(firstName, lastName, phone, email) {
+
+    var fNameErr = lNameErr = phoneErr = emailErr = true;
+
+    if (firstName == "") {
+        console.log("FIRST NAME IS BLANK");
+    }
+    else {
+        console.log("first name IS VALID");
+        fNameErr = false;
+    }
+
+    if (lastName == "") {
+        console.log("LAST NAME IS BLANK");
+    }
+    else {
+        console.log("LAST name IS VALID");
+        lNameErr = false;
+    }
+
+    if (phone == "") {
+        console.log("PHONE IS BLANK");
+    }
+    else {
+        var regex = /^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
+
+        if (regex.test(phone) == false) {
+            console.log("PHONE IS NOT VALID");
+        }
+
+        else {
+
+            console.log("PHONE IS VALID");
+            phoneErr = false;
+        }
+    }
+
+    if (email == "") {
+        console.log("EMAIL IS BLANK");
+    }
+    else {
+        var regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+
+        if (regex.test(email) == false) {
+            console.log("EMAIL IS NOT VALID");
+        }
+
+        else {
+
+            console.log("EMAIL IS VALID");
+            emailErr = false;
+        }
+    }
+
+    if ((phoneErr || emailErr || fNameErr || lNameErr) == true) {
+        return false;
+
+    }
+
+    return true;
+
 }
