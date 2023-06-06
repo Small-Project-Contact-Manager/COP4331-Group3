@@ -141,13 +141,18 @@ label
 {
 	padding: 15px 0px 10px 0px;
 	margin-right: 10px;
-    	display: inline-block;
+    display: inline-block;
 }
 
 span
 {
 	display: block;
 	overflow: hidden;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: small;
+	text-align: center;
+	color: red;
 }
 
 .loginRegisterBox
@@ -168,7 +173,7 @@ span
 .buttonBox
 {
 	width: 220px;
-	margin: 35px auto;
+	margin: 20px auto;
 	position: relative;
 	background-color: #339DFF;
 	border-radius: 10px;
