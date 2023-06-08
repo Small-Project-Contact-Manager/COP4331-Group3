@@ -90,6 +90,7 @@ body
 	background-color: #0080FF;
 	color: white;
 	margin: 10px 10px 10px 1px;
+	padding: 10px 10px 10px 10px;
 	width: 20%;
 	border-radius: 10px;
 }
@@ -148,11 +149,6 @@ span
 {
 	display: block;
 	overflow: hidden;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	font-size: small;
-	text-align: center;
-	color: red;
 }
 
 .loginRegisterBox
