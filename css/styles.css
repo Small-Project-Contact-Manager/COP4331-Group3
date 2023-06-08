@@ -19,7 +19,7 @@ body
 
 .logo
 {
-	height: 100px;
+	height: 200px;
 	border-radius: 10px;
 }
 
@@ -68,6 +68,13 @@ body
 .navBarRightAlign
 {
 	float: right;
+	margin-right: 15px;
+}
+
+/* Centered section inside the top navigation */
+.navCentered{
+	display: flex;
+	justify-content: center;
 }
 
 /* Column container */
