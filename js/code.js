@@ -265,13 +265,15 @@ function addContact()
 	let phone = document.getElementById("addPhone").value;
 	let email = document.getElementById("addEmail").value;
 	document.getElementById("addContactResult").innerHTML = "";
-	document.getElementById('addContactModal').style.display='none';
+	
 
 	if (!validAddContact(firstName, lastName, phone, email)) {
         console.log("INVALID FIRST NAME, LAST NAME, PHONE, OR EMAIL SUBMITTED");
-		alert("Invalid contact information!");
+		//alert("Invalid contact information!");
         return;
 	}
+
+	document.getElementById('addContactModal').style.display='none';
 
 	let tmp = 
 	{
@@ -525,6 +527,7 @@ function validAddContact(firstName, lastName, phone, email) {
 
     if (firstName == "") {
         console.log("FIRST NAME IS BLANK");
+		document.getElementById("addContactResult").innerHTML = "First Name Cannot Be Blank!";
     }
     else {
         console.log("first name IS VALID");
@@ -533,6 +536,7 @@ function validAddContact(firstName, lastName, phone, email) {
 
     if (lastName == "") {
         console.log("LAST NAME IS BLANK");
+		document.getElementById("addContactResult").innerHTML = "Last Name Cannot Be Blank!";
     }
     else {
         console.log("LAST name IS VALID");
@@ -541,12 +545,14 @@ function validAddContact(firstName, lastName, phone, email) {
 
     if (phone == "") {
         console.log("PHONE IS BLANK");
+		document.getElementById("addContactResult").innerHTML = "Phone Cannot Be Blank!";
     }
     else {
         var regex = /^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
 
         if (regex.test(phone) == false) {
             console.log("PHONE IS NOT VALID");
+			document.getElementById("addContactResult").innerHTML = "Phone Should Be (###)-###-####, () and - are optional";
         }
 
         else {
@@ -558,12 +564,14 @@ function validAddContact(firstName, lastName, phone, email) {
 
     if (email == "") {
         console.log("EMAIL IS BLANK");
+		document.getElementById("addContactResult").innerHTML = "Email Cannot Be Blank";
     }
     else {
         var regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 
         if (regex.test(email) == false) {
             console.log("EMAIL IS NOT VALID");
+			document.getElementById("addContactResult").innerHTML = "Email should be example@mail.com!";
         }
 
         else {
@@ -571,6 +579,11 @@ function validAddContact(firstName, lastName, phone, email) {
             console.log("EMAIL IS VALID");
             emailErr = false;
         }
+    }
+
+	if (firstName == "" &&  lastName == "" && phone == "" &&  email== "") {
+        document.getElementById("addContactResult").innerHTML = "All fields must be filled out!";
+
     }
 
     if ((phoneErr || emailErr || fNameErr || lNameErr) == true) {
