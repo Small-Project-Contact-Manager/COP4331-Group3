@@ -49,6 +49,14 @@ function clickAdd()
 /*related to modal pop up for modifying contacts */
 function clickEdit(num)
 {
+	// Set the form values before the modal opens.
+	let info = document.getElementById(`ContactInfo${num}`);
+	
+	document.getElementById("editFirstName").value = info.getAttribute("fname");
+	document.getElementById("editLastName").value = info.getAttribute("lname");
+	document.getElementById("editEmail").value = info.getAttribute("contactemail");
+	document.getElementById("editPhone").value = info.getAttribute("contactphone");
+	
 	// Get the modal
 	var modal = document.getElementById('editContactModal');
 
@@ -296,7 +304,11 @@ function addContact()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				document.getElementById("addContactResult").innerHTML = "Contact has been added";
+				// After adding a contact, reset the form input.
+				document.getElementById("addFirstName").value = "";
+				document.getElementById("addLastName").value = "";
+				document.getElementById("addEmail").value = "";
+				document.getElementById("addPhone").value = "";
 				showContacts();
 			}
 		};
@@ -357,8 +369,6 @@ function searchContact()
 // Changes a contact for a user.
 function changeContact(num)
 {
-	console.log("successful function call");
-	
 	let info = document.getElementById(`ContactInfo${num}`);
 	document.getElementById('editContactModal').style.display='none';
 
@@ -494,6 +504,8 @@ function showContacts()
 					fname="${jsonObject.results[i].FirstName}"
 					lname="${jsonObject.results[i].LastName}"
 					contactid="${jsonObject.results[i].ID}"
+					contactemail="${jsonObject.results[i].Email}"
+					contactphone="${jsonObject.results[i].Phone}"
 					></span>
 					
 					<tr>
