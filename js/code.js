@@ -56,6 +56,7 @@ function clickEdit(num)
 	document.getElementById("editLastName").value = info.getAttribute("lname");
 	document.getElementById("editEmail").value = info.getAttribute("contactemail");
 	document.getElementById("editPhone").value = info.getAttribute("contactphone");
+	document.getElementById("editContactResult").innerHTML = "";
 	
 	// Get the modal
 	var modal = document.getElementById('editContactModal');
@@ -370,7 +371,6 @@ function searchContact()
 function changeContact(num)
 {
 	let info = document.getElementById(`ContactInfo${num}`);
-	document.getElementById('editContactModal').style.display='none';
 
 	// Create a JSON object to send.
 	newFirst = document.getElementById("editFirstName").value;
@@ -378,6 +378,14 @@ function changeContact(num)
 	newEmail = document.getElementById("editEmail").value;
 	newPhone = document.getElementById("editPhone").value;
 	contactId = info.getAttribute("contactid");
+	
+	if (!validEditContact(newFirst, newLast, newPhone, newEmail)) {
+        console.log("INVALID FIRST NAME, LAST NAME, PHONE, OR EMAIL SUBMITTED");
+		//alert("Invalid contact information!");
+        return;
+	}
+
+	document.getElementById('editContactModal').style.display='none';
 	
 	let tmp =
 	{
@@ -595,6 +603,81 @@ function validAddContact(firstName, lastName, phone, email) {
 
 	if (firstName == "" &&  lastName == "" && phone == "" &&  email== "") {
         document.getElementById("addContactResult").innerHTML = "All fields must be filled out!";
+
+    }
+
+    if ((phoneErr || emailErr || fNameErr || lNameErr) == true) {
+        return false;
+
+    }
+
+    return true;
+
+}
+
+// Validation for editing a contact.
+function validEditContact(firstName, lastName, phone, email) {
+
+    var fNameErr = lNameErr = phoneErr = emailErr = true;
+
+    if (firstName == "") {
+        console.log("FIRST NAME IS BLANK");
+		document.getElementById("editContactResult").innerHTML = "First Name Cannot Be Blank!";
+    }
+    else {
+        console.log("first name IS VALID");
+        fNameErr = false;
+    }
+
+    if (lastName == "") {
+        console.log("LAST NAME IS BLANK");
+		document.getElementById("editContactResult").innerHTML = "Last Name Cannot Be Blank!";
+    }
+    else {
+        console.log("LAST name IS VALID");
+        lNameErr = false;
+    }
+
+    if (phone == "") {
+        console.log("PHONE IS BLANK");
+		document.getElementById("editContactResult").innerHTML = "Phone Cannot Be Blank!";
+    }
+    else {
+        var regex = /^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
+
+        if (regex.test(phone) == false) {
+            console.log("PHONE IS NOT VALID");
+			document.getElementById("editContactResult").innerHTML = "Phone Should Be (###)-###-####, () and - are optional";
+        }
+
+        else {
+
+            console.log("PHONE IS VALID");
+            phoneErr = false;
+        }
+    }
+
+    if (email == "") {
+        console.log("EMAIL IS BLANK");
+		document.getElementById("editContactResult").innerHTML = "Email Cannot Be Blank";
+    }
+    else {
+        var regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+
+        if (regex.test(email) == false) {
+            console.log("EMAIL IS NOT VALID");
+			document.getElementById("editContactResult").innerHTML = "Email should be example@mail.com!";
+        }
+
+        else {
+
+            console.log("EMAIL IS VALID");
+            emailErr = false;
+        }
+    }
+
+	if (firstName == "" &&  lastName == "" && phone == "" &&  email== "") {
+        document.getElementById("editContactResult").innerHTML = "All fields must be filled out!";
 
     }
 
