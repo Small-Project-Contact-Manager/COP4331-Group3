@@ -167,6 +167,11 @@ function doRegister()
 	let password = document.getElementById("regPassword").value;
 //	var hash = md5( password );
 	
+	if (!validSignUpForm(firstname, lastname, login, password)) {
+		document.getElementById("registerResult").innerHTML = "Invalid signup!";
+		return;
+	}
+	
 	document.getElementById("registerResult").innerHTML = "";
 
 	let tmp = 
@@ -688,4 +693,67 @@ function validEditContact(firstName, lastName, phone, email) {
 
     return true;
 
+}
+
+// Validation for register.
+function validSignUpForm(fName, lName, user, pass) {
+
+    var fNameErr = lNameErr = userErr = passErr = true;
+
+    if (fName == "") {
+        console.log("FIRST NAME IS BLANK");
+    }
+    else {
+        console.log("first name IS VALID");
+        fNameErr = false;
+    }
+
+    if (lName == "") {
+        console.log("LAST NAME IS BLANK");
+    }
+    else {
+        console.log("LAST name IS VALID");
+        lNameErr = false;
+    }
+
+    if (user == "") {
+        console.log("USERNAME IS BLANK");
+    }
+    else {
+        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])[a-zA-Z\d]{8,16}$/;
+
+        if (regex.test(user) == false) {
+            console.log("USERNAME IS NOT VALID");
+        }
+
+        else {
+
+            console.log("USERNAME IS VALID");
+            userErr = false;
+        }
+    }
+
+    if (pass == "") {
+        console.log("PASSWORD IS BLANK");
+    }
+    else {
+        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,}$/;
+
+        if (regex.test(pass) == false) {
+            console.log("PASSWORD IS NOT VALID");
+        }
+
+        else {
+
+            console.log("PASSWORD IS VALID");
+            passErr = false;
+        }
+    }
+
+    if ((fNameErr || lNameErr || userErr || passErr) == true) {
+        return false;
+
+    }
+
+    return true;
 }
